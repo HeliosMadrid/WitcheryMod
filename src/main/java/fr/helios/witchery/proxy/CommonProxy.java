@@ -7,7 +7,6 @@ import java.io.File;
 public class CommonProxy
 {
     public void preInit(File configFile) {
-        WitcheryItems.INSTANCE.initItems();
     }
 
     public void init() {

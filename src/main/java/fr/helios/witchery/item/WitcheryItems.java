@@ -1,43 +1,35 @@
 package fr.helios.witchery.item;
 
-import com.google.common.collect.Lists;
-import fr.helios.witchery.utils.References;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.item.Item;
 import net.minecraftforge.client.event.ModelRegistryEvent;
 import net.minecraftforge.client.model.ModelLoader;
+import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
-import net.minecraftforge.fml.relauncher.Side;
 
-import java.util.List;
-
-@Mod.EventBusSubscriber(modid = References.MODID, value = Side.CLIENT)
+@Mod.EventBusSubscriber
 public class WitcheryItems
 {
     public static final WitcheryItems INSTANCE = new WitcheryItems();
 
-    private List<Item> items = Lists.newArrayList();
-
     public static Item itemtest;
 
-    public void initItems() {
-        this.itemtest = new ItemTest();
+    public static void initItems() {
+        WitcheryItems.itemtest = new ItemTest("test");
     }
 
     @SubscribeEvent
     public void registerItemsModels(ModelRegistryEvent event) {
-        for(Item item : items) {
-            registerItemModel(item);
-        }
+        registerItemModel(itemtest);
     }
 
     private void registerItemModel(Item item) {
         ModelLoader.setCustomModelResourceLocation(item, 0, new ModelResourceLocation(item.getRegistryName(), "inventory"));
     }
 
-    public List<Item> getItems()
-    {
-        return items;
+    @SubscribeEvent
+    public void registerItems(RegistryEvent.Register<Item> event) {
+        event.getRegistry().registerAll(itemtest);
     }
 }

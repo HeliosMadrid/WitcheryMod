@@ -5,14 +5,10 @@ import net.minecraft.item.Item;
 
 public class ItemTest extends Item
 {
-    private final String name = "test";
-
-    public ItemTest()
+    public ItemTest(String name)
     {
-        setTranslationKey(this.name);
-        setRegistryName(this.name);
+        setTranslationKey(name);
+        setRegistryName(name);
         setCreativeTab(CreativeTabs.COMBAT);
-
-        WitcheryItems.INSTANCE.getItems();
     }
 }
