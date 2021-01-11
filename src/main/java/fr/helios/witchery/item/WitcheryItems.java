@@ -19,7 +19,11 @@ public class WitcheryItems
 
     private List<Item> items = Lists.newArrayList();
 
-    public static final Item itemtest = new ItemTest();
+    public static Item itemtest;
+
+    public void initItems() {
+        this.itemtest = new ItemTest();
+    }
 
     @SubscribeEvent
     public void registerItemsModels(ModelRegistryEvent event) {

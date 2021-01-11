@@ -1,6 +1,8 @@
 package fr.helios.witchery;
 
+import fr.helios.witchery.event.RegisteringEvent;
 import fr.helios.witchery.proxy.CommonProxy;
+import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.Mod.EventHandler;
 import net.minecraftforge.fml.common.SidedProxy;
@@ -21,6 +23,11 @@ public class Witchery
     public static CommonProxy proxy;
 
     private Logger logger;
+
+    public Witchery()
+    {
+        MinecraftForge.EVENT_BUS.register(new RegisteringEvent());
+    }
 
     @EventHandler
     public void preInit(FMLPreInitializationEvent event) {
