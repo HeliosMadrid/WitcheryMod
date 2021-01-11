@@ -18,7 +18,7 @@ public class Witchery
     public static Witchery Instance;
 
     @SidedProxy(modId = MODID, clientSide = CLIENT_PROXY, serverSide = SERVER_PROXY)
-    public static CommonProxy proxy = new CommonProxy();
+    public static CommonProxy proxy;
 
     private Logger logger;
 
