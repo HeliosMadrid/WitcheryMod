@@ -23,12 +23,14 @@ public class Witchery
     public static CommonProxy proxy;
 
     private Logger logger;
-    private WitcheryTab tab = new WitcheryTab("Witchery Tab");
+
+    private WitcheryTab tab = new WitcheryTab("tab_witchery");
 
     @EventHandler
     public void preInit(FMLPreInitializationEvent event) {
         proxy.preInit(event.getSuggestedConfigurationFile());
         this.logger = event.getModLog();
+
         WitcheryItems.initItems();
     }
 
@@ -40,5 +42,10 @@ public class Witchery
     @EventHandler
     public void postInit(FMLPostInitializationEvent event) {
         proxy.postInit();
+    }
+
+    public WitcheryTab getTab()
+    {
+        return tab;
     }
 }
